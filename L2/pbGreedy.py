@@ -3,6 +3,11 @@
 import os.path
 LIMIT_MIN = 999999999
 
+#citeste datele din fisier
+#parametri: input: caleFisierCitire
+#           output: n(INT), orasSursa(INT), orasDestinatie(INT), costOrase (matrice[INT][INT])
+# n - numarul de orase 
+# costOrase - matrice cu costul oraselor 
 def citesteDate(caleFisierCitire):
     if not os.path.isfile(caleFisierCitire):
         print('Fisierul nu exista!')
@@ -23,6 +28,9 @@ def citesteDate(caleFisierCitire):
         fisier.close()
         return n, orasSursa, orasDestinatie, costOrase
 
+#returneaza pozitia si costul minim, orasul care urmeza sa fie vizitat
+#parametri: input:n(INT), distanteOrase (vector[INT]), vectorVizitat(vector[INT])
+#           output:pozitie_minim(INT), costMinim(INT)
 def detUrmator(n, distanteOrase, vectorVizitat):
     pozitie_minim = -1
     costMinim = LIMIT_MIN
@@ -35,6 +43,9 @@ def detUrmator(n, distanteOrase, vectorVizitat):
 
     return pozitie_minim, costMinim  
 
+#determina drumul de cost minim de la orasSursa la orasDestinatie
+#parametri: input: n(INT), orasSursa(INT), orasDestinatie(INT),costOrase (matrice[INT][INT])
+#           output: (INT) numarul de orase, (vector[INT]) drumul gasit, (INT) costul total 
 def detDrumCostMin(n, orasSursa, orasDestinatie, costOrase):
     vectorVizitat = [orasSursa]
     costTotal = 0
