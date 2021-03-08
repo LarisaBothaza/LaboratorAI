@@ -70,15 +70,19 @@ def run():
     caleFisierAfisare = 'D:/UBB_sem4/AI/Laborator/LaboratorAI/L2/greedy_solution.txt'
     n, orasSursa, orasDestinatie, costOrase = citesteDate(caleFisierCitire)
 
-    #determinare drum cerinta 1 - ciclu: nod sursa = nod destinatie
-    minim = LIMIT_MIN
-    theBest = []
-    for index in range(0,n+1):
-        if index != 0:
-            n,vectorVizitat,costTotal = detDrumCostMin(n, index, index, costOrase)
-            if costTotal < minim:
-                minim = costTotal
-                theBest = vectorVizitat
+    #determinare drum cerinta 1 - ciclu: nod sursa = nod destinatie = 1 
+    #initial am inteles cel mai optim drum, incepand din orice oras
+    #minim = LIMIT_MIN
+    # theBest = []
+    # for index in range(0,n+1):
+    #     if index != 0:
+    #         n,vectorVizitat,costTotal = detDrumCostMin(n, index, index, costOrase)
+    #         if costTotal < minim:
+    #             minim = costTotal
+    #             theBest = vectorVizitat
+
+    #!!!! second line: the optimal traversing path that visits all the cities (indexes of cities, starting by 1)
+    n,theBest, minim = detDrumCostMin(n, 1, 1, costOrase)
 
     #print(n), print(theBest), print(minim)
     
